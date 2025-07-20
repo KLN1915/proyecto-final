@@ -7,8 +7,9 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,8 +28,8 @@ public class Ingreso {
     @Column(name = "monto")
     private Float monto;
 
-    @Column(name = "fecha")
-    private Date fecha;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    private LocalDate fecha;
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
